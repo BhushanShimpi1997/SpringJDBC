@@ -1,0 +1,9 @@
+#
+# Default profile
+#
+spring:
+  application:
+    name: employee-api
+
+server:
+  port: 8080
