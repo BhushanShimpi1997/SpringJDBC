@@ -4,6 +4,7 @@ import com.student.models.Student;
 import com.student.rowmapper.StudentRowMapper;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -14,10 +15,20 @@ import java.util.Optional;
 
 @Repository
 @Slf4j
-@AllArgsConstructor
 public class StudentRepository {
 
     private JdbcTemplate template;
+    @Autowired
+    public StudentRepository(JdbcTemplate template){
+        this.template=template;
+        String sql="CREATE table IF NOT EXISTS student(rollNo int AUTO_INCREMENT primary key," +
+                "studentName varchar(50)Not Null," +
+                "city varchar(30)," +
+                "mobileNumber varchar(12) not null," +
+                "createdAt TIMESTAMP DEFAULT NULL ," +
+                "updatedAt TIMESTAMP DEFAULT NULL);";
+        template.execute(sql);
+    }
 
     //create Student
     public int createStudent(Student student){

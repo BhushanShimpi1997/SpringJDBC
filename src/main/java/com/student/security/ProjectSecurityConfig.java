@@ -19,6 +19,7 @@ public class ProjectSecurityConfig {
     DefaultSecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception{
         http.csrf().disable()
                 .authorizeHttpRequests()
+                .requestMatchers("/student/welcome").permitAll()
                 .requestMatchers("/student/create").authenticated()
                 .requestMatchers("/student/all").authenticated()
                 .requestMatchers("/student/{rollNo}").authenticated()

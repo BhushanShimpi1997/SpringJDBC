@@ -1,0 +1,10 @@
+#
+# Default Configuration(Profile)
+#
+spring:
+  application:
+    name: student-api
+  profiles:
+    active: qa
+server:
+  port: 9191
